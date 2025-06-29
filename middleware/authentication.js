@@ -2,6 +2,8 @@ const jwt = require("jsonwebtoken");
 const User = require("../Modals/user");
 require("dotenv").config();
 const auth = async (req, res, next) => {
+  console.log("🛡️ AUTH MIDDLEWARE TRIGGERED");
+  console.log("Cookies:", req.cookies);
   const token = req.cookies.token;
   if (!token) {
     return res.status(401).json({ error: "no token, authorization denied" });
