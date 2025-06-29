@@ -15,6 +15,11 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'],
     exposedHeaders: ['set-cookie']
 }))
+app.use((req, res, next) => {
+    console.log(`🌐 ${new Date().toISOString()} - ${req.method} ${req.url}`);
+    console.log('Origin:', req.headers.origin);
+    next();
+});
 app.use(express.json());
 app.use(cookieParser());
 
